@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:autoclientapp/Daxline.ttf">
+   </FileRef>
+   <FileRef
       location = "group:autoclientapp.xcodeproj">
    </FileRef>
    <FileRef

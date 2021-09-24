@@ -13,7 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1D97DAAA00F3739933F4D095 /* libPods-autoclientapp-autoclientappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D07DDD35CD160458248FABCD /* libPods-autoclientapp-autoclientappTests.a */; };
 		372117B0C83C193B16B49D14 /* libPods-autoclientapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB55A72E1274175A6AC48533 /* libPods-autoclientapp.a */; };
-		41B8B5CD26FE75050075C087 /* Daxline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41B8B5CC26FE75050075C087 /* Daxline.ttf */; };
+		41B8B5D026FE7B9F0075C087 /* Daxline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41B8B5CF26FE7A3D0075C087 /* Daxline.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +39,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = autoclientapp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = autoclientapp/main.m; sourceTree = "<group>"; };
 		2DBB88141775A3ECC1793E44 /* Pods-autoclientapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-autoclientapp.debug.xcconfig"; path = "Target Support Files/Pods-autoclientapp/Pods-autoclientapp.debug.xcconfig"; sourceTree = "<group>"; };
-		41B8B5CC26FE75050075C087 /* Daxline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Daxline.ttf; sourceTree = "<group>"; };
+		41B8B5CF26FE7A3D0075C087 /* Daxline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Daxline.ttf; path = autoclientapp/Daxline.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = autoclientapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB55A72E1274175A6AC48533 /* libPods-autoclientapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-autoclientapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07DDD35CD160458248FABCD /* libPods-autoclientapp-autoclientappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-autoclientapp-autoclientappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,9 +88,9 @@
 		13B07FAE1A68108700A75B9A /* autoclientapp */ = {
 			isa = PBXGroup;
 			children = (
-				41B8B5CB26FE74EE0075C087 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				41B8B5CF26FE7A3D0075C087 /* Daxline.ttf */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
@@ -107,14 +107,6 @@
 				D07DDD35CD160458248FABCD /* libPods-autoclientapp-autoclientappTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		41B8B5CB26FE74EE0075C087 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				41B8B5CC26FE75050075C087 /* Daxline.ttf */,
-			);
-			name = Fonts;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -254,8 +246,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B8B5D026FE7B9F0075C087 /* Daxline.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				41B8B5CD26FE75050075C087 /* Daxline.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
