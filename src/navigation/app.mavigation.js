@@ -1,13 +1,18 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StockDashBooardScreen} from '../ui/screens/StockDashBoard/StockDashBoardScreen';
 import {StockDetailsScreen} from '../ui/screens/StockDetails/StockDetailsScreem';
+import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
+import 'react-native-gesture-handler';
 
-const Stack = createNativeStackNavigator();
+const Stack = createSharedElementStackNavigator();
 
 export const MainNavigator = () => {
     return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator
+            mode="modal"
+            screenOptions={{
+                headerShown: false,
+            }}>
             <Stack.Screen
                 name="StockDashBooardScreen"
                 component={StockDashBooardScreen}
@@ -16,6 +21,7 @@ export const MainNavigator = () => {
             <Stack.Screen
                 name="StockDetailsScreen"
                 component={StockDetailsScreen}
+                sharedElements={route => [route.params.stock.id]}
             />
         </Stack.Navigator>
     );

@@ -1,7 +1,8 @@
 import React, {useMemo} from 'react';
-import {ImageBackground, Pressable, StyleSheet, View} from 'react-native';
+import {Image, Pressable, StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-elements';
 import {useSafeAreaFrame} from 'react-native-safe-area-context';
+import {SharedElement} from 'react-navigation-shared-element';
 
 const margin = 16;
 const radius = 5;
@@ -18,18 +19,20 @@ export const StockListItem = ({stockItem, onStockPress}) => {
     }, [cardWidth]);
 
     return (
-        <Pressable key={stockItem.id} onPress={onStockPress}>
-            <ImageBackground
-                source={stockItem.image}
-                style={[
-                    styles.cardContainer,
-                    {width: cardWidth, height: cardHeight},
-                ]}>
-                <View style={styles.shadowContainer}>
+        <SharedElement id={stockItem.id}>
+            <Pressable onPress={onStockPress}>
+                <Image
+                    source={stockItem.image}
+                    style={[
+                        styles.cardContainer,
+                        {width: cardWidth, height: cardHeight},
+                    ]}
+                />
+                {/* <View style={styles.shadowContainer}>
                     <Text style={styles.textName}>{stockItem.name}</Text>
-                </View>
-            </ImageBackground>
-        </Pressable>
+                </View> */}
+            </Pressable>
+        </SharedElement>
     );
 };
 

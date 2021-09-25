@@ -10,12 +10,19 @@ export const StockList = ({stockItems}) => {
         return null;
     }
 
-    const onStockPress = () => navigate('StockDetailsScreen');
+    const onStockPress = stock => {
+        console.log(stock.id);
+        navigate('StockDetailsScreen', {stock});
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
             {stockItems.map(stock => (
-                <StockListItem stockItem={stock} onStockPress={onStockPress} />
+                <StockListItem
+                    key={stock.id}
+                    stockItem={stock}
+                    onStockPress={() => onStockPress(stock)}
+                />
             ))}
         </ScrollView>
     );
