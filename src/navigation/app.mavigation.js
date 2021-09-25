@@ -12,6 +12,13 @@ export const MainNavigator = () => {
             mode="modal"
             screenOptions={{
                 headerShown: false,
+                gestureEnabled: false,
+                cardStyle: {
+                    backgroundColor: 'transparent',
+                },
+                // cardStyleInterpolator: ({current: {progress}}) => {
+                //     return {cardStyle: {opacity: progress}};
+                // },
             }}>
             <Stack.Screen
                 name="StockDashBooardScreen"
@@ -21,7 +28,11 @@ export const MainNavigator = () => {
             <Stack.Screen
                 name="StockDetailsScreen"
                 component={StockDetailsScreen}
-                sharedElements={route => [route.params.stock.id]}
+                sharedElements={(route, otherRoute, showing) => {
+                    console.log(route, showing);
+                    const {id} = route.params.stock;
+                    return [`${id}`];
+                }}
             />
         </Stack.Navigator>
     );
