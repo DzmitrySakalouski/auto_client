@@ -28,10 +28,9 @@ export const MainNavigator = () => {
             <Stack.Screen
                 name="StockDetailsScreen"
                 component={StockDetailsScreen}
-                sharedElements={(route, otherRoute, showing) => {
-                    console.log(route, showing);
+                sharedElements={route => {
                     const {id} = route.params.stock;
-                    return [`${id}`];
+                    return [`image_background.${id}`];
                 }}
             />
         </Stack.Navigator>
