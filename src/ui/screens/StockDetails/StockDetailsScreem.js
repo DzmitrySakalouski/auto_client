@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/core';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {
     Dimensions,
     Image,
@@ -8,7 +8,7 @@ import {
     View,
 } from 'react-native';
 import {Text} from 'react-native-elements';
-import {PanGestureHandler, ScrollView} from 'react-native-gesture-handler';
+import {PanGestureHandler} from 'react-native-gesture-handler';
 import Animated, {
     runOnJS,
     useAnimatedGestureHandler,
@@ -20,10 +20,12 @@ import {snapPoint} from 'react-native-redash';
 import {useSafeAreaFrame} from 'react-native-safe-area-context';
 import {SharedElement} from 'react-navigation-shared-element';
 
-const {height} = Dimensions.get('window');
+const margin = 16;
 
 export const StockDetailsScreen = ({navigation, route}) => {
     const {stock} = route.params;
+
+    const {height, width} = useSafeAreaFrame();
 
     const translateX = useSharedValue(0);
     const translateY = useSharedValue(0);
@@ -57,6 +59,10 @@ export const StockDetailsScreen = ({navigation, route}) => {
         ],
     }));
 
+    const textWidth = useMemo(() => {
+        return (width - margin * 3) / 2;
+    }, [width]);
+
     if (!stock) {
         return <Text h1>Ooops...</Text>;
     }
@@ -64,14 +70,18 @@ export const StockDetailsScreen = ({navigation, route}) => {
     return (
         <PanGestureHandler onGestureEvent={onGestureEvent}>
             <Animated.View style={moveStyle}>
-                <SharedElement id={stock.id}>
-                    <ImageBackground
+                <SharedElement id={`image_background.${stock.id}`}>
+                    <Image
                         resizeMode="cover"
                         source={stock.image}
-                        style={styles.image}>
-                        <View style={styles.shadowContainer} />
-                    </ImageBackground>
+                        style={styles.image}
+                    />
                 </SharedElement>
+                {/* <View>
+                    <Text style={[styles.titleText, {width: textWidth}]}>
+                        {stock.name}
+                    </Text>
+                </View> */}
             </Animated.View>
         </PanGestureHandler>
     );
@@ -84,7 +94,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    image: {width: '100%', height: '100%'},
+    image: {width: '100%', height: '100%', opacity: 1},
     textName: {
         fontFamily: 'DaxlinePro-Regular',
         color: 'white',
@@ -92,13 +102,14 @@ const styles = StyleSheet.create({
         fontSize: 18,
         position: 'absolute',
     },
-    shadowContainer: {
-        // flex: 1,
-        justifyContent: 'flex-end',
-        // paddingLeft: 10,
-        paddingBottom: 5,
-        // backgroundColor: '#d32e20',
-        opacity: 0.8,
-        // paddingRight: 10,
+    titleText: {
+        position: 'absolute',
+        zIndex: 2,
+        width: '35%',
+        bottom: 25,
+        left: 5,
+        fontFamily: 'DaxlinePro-Regular',
+        fontWeight: 'bold',
+        fontSize: 16,
     },
 });

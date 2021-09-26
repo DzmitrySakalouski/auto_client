@@ -1,5 +1,13 @@
+import {useFocusEffect} from '@react-navigation/core';
 import React, {useMemo} from 'react';
-import {ImageBackground, Pressable, StyleSheet, View} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
+import {Text} from 'react-native-elements';
+import Animated, {
+    useAnimatedStyle,
+    useSharedValue,
+    withSpring,
+    withTiming,
+} from 'react-native-reanimated';
 import {useSafeAreaFrame} from 'react-native-safe-area-context';
 import {SharedElement} from 'react-navigation-shared-element';
 
@@ -8,6 +16,28 @@ const radius = 5;
 
 export const StockListItem = ({stockItem, onStockPress}) => {
     const {width} = useSafeAreaFrame();
+
+    const imgOpacity = useSharedValue(0.3);
+    const textContainerTranslation = useSharedValue(0);
+
+    const animatedImageStyle = useAnimatedStyle(() => {
+        return {
+            width: '100%',
+            height: '100%',
+            opacity: imgOpacity.value,
+        };
+    });
+
+    const handleStockPress = () => {
+        imgOpacity.value = withSpring(1);
+        textContainerTranslation.value = withSpring(-200);
+        onStockPress();
+    };
+
+    useFocusEffect(() => {
+        imgOpacity.value = withTiming(0.3, {duration: 1000});
+        textContainerTranslation.value = withTiming(0, {duration: 1000});
+    });
 
     const cardWidth = useMemo(() => {
         return (width - margin * 3) / 2;
@@ -18,48 +48,60 @@ export const StockListItem = ({stockItem, onStockPress}) => {
     }, [cardWidth]);
 
     return (
-        <SharedElement id={stockItem.id}>
+        <View style={{position: 'relative'}}>
             <Pressable
-                onPress={onStockPress}
+                onPress={handleStockPress}
                 style={[
                     {width: cardWidth, height: cardHeight},
                     styles.cardContainer,
                 ]}>
-                <ImageBackground source={stockItem.image} style={styles.image}>
-                    <View style={styles.shadowContainer} />
-                </ImageBackground>
+                <SharedElement id={`image_background.${stockItem.id}`}>
+                    <Animated.Image
+                        source={stockItem.image}
+                        style={animatedImageStyle}
+                    />
+                </SharedElement>
+                <View style={[styles.titleContainer, {width: cardWidth}]}>
+                    {stockItem.name.map((stockName, index) => (
+                        <>
+                            <Text style={styles.titleText} key={stockName}>
+                                {stockName}
+                            </Text>
+                            {index === 0 && (
+                                <Text
+                                    style={[styles.titleText, {fontSize: 30}]}
+                                    key={`${stockName}+`}>
+                                    +
+                                </Text>
+                            )}
+                        </>
+                    ))}
+                </View>
             </Pressable>
-        </SharedElement>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     cardContainer: {
         borderRadius: radius,
+        borderWidth: 1,
         overflow: 'hidden',
         marginBottom: margin,
         marginRight: margin,
         flex: 1,
-        position: 'relative',
     },
-    textName: {
+    titleText: {
         fontFamily: 'DaxlinePro-Regular',
-        color: 'white',
-        fontWeight: 'bold',
+        fontWeight: '900',
         fontSize: 18,
+        color: 'black',
+        textAlign: 'center',
     },
-    shadowContainer: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        paddingLeft: 10,
-        paddingBottom: 5,
-        // backgroundColor: '#d32e20',
-        opacity: 0.8,
-        paddingRight: 10,
-        position: 'relative',
-    },
-    image: {
-        width: '100%',
+    titleContainer: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
         height: '100%',
     },
 });
