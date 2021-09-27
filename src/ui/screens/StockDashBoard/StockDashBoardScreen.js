@@ -1,4 +1,6 @@
 import React from 'react';
+import {View} from 'react-native';
+import {PageHeader} from '../../components/PageHeader';
 import {StockList} from './components/StockList';
 
 const stock_1 = require('../../../assets/pic/stock_1.jpeg');
@@ -56,5 +58,10 @@ const mock = [
 ];
 
 export const StockDashBooardScreen = props => {
-    return <StockList stockItems={mock} />;
+    return (
+        <View style={{paddingTop: 30}}>
+            <PageHeader />
+            <StockList stockItems={mock} />
+        </View>
+    );
 };

@@ -1,1 +1,2 @@
-export * from './app.mavigation';
+export * from './stock.mavigation';
+export * from './app.navigator';

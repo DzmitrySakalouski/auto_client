@@ -10,12 +10,14 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {MainNavigator} from './src/navigation';
+import {AppNavigator} from './src/navigation';
+import {StatusBar} from 'react-native';
 
 const App = () => (
     <SafeAreaProvider>
         <NavigationContainer>
-            <MainNavigator />
+            <StatusBar barStyle="dark-content" />
+            <AppNavigator />
         </NavigationContainer>
     </SafeAreaProvider>
 );

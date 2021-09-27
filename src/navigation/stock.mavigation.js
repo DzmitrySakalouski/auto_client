@@ -6,7 +6,7 @@ import 'react-native-gesture-handler';
 
 const Stack = createSharedElementStackNavigator();
 
-export const MainNavigator = () => {
+export const StockNavigator = () => {
     return (
         <Stack.Navigator
             mode="modal"
@@ -16,9 +16,6 @@ export const MainNavigator = () => {
                 cardStyle: {
                     backgroundColor: 'transparent',
                 },
-                // cardStyleInterpolator: ({current: {progress}}) => {
-                //     return {cardStyle: {opacity: progress}};
-                // },
             }}>
             <Stack.Screen
                 name="StockDashBooardScreen"
@@ -28,6 +25,7 @@ export const MainNavigator = () => {
             <Stack.Screen
                 name="StockDetailsScreen"
                 component={StockDetailsScreen}
+                options={{tabBarVisible: false}}
                 sharedElements={route => {
                     const {id} = route.params.stock;
                     return [`image_background.${id}`];

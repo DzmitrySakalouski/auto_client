@@ -48,7 +48,7 @@ export const StockListItem = ({stockItem, onStockPress}) => {
     }, [cardWidth]);
 
     return (
-        <View style={{position: 'relative'}}>
+        <View style={styles.container}>
             <Pressable
                 onPress={handleStockPress}
                 style={[
@@ -85,7 +85,6 @@ export const StockListItem = ({stockItem, onStockPress}) => {
 const styles = StyleSheet.create({
     cardContainer: {
         borderRadius: radius,
-        borderWidth: 1,
         overflow: 'hidden',
         marginBottom: margin,
         marginRight: margin,
@@ -103,5 +102,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
+    },
+    container: {
+        position: 'relative',
+        zIndex: 2,
+        shadowColor: '#d32e20',
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.4,
+        shadowRadius: 1.41,
+
+        elevation: 2,
     },
 });

@@ -42,6 +42,7 @@
 		2DBB88141775A3ECC1793E44 /* Pods-autoclientapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-autoclientapp.debug.xcconfig"; path = "Target Support Files/Pods-autoclientapp/Pods-autoclientapp.debug.xcconfig"; sourceTree = "<group>"; };
 		41433FFC26FE832C007563CA /* Daxline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Daxline.ttf; sourceTree = "<group>"; };
 		4162492D26FF2E85007D16B0 /* Daxline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Daxline.ttf; sourceTree = "<group>"; };
+		41AB1E24270207B800720AC2 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = autoclientapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB55A72E1274175A6AC48533 /* libPods-autoclientapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-autoclientapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07DDD35CD160458248FABCD /* libPods-autoclientapp-autoclientappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-autoclientapp-autoclientappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +113,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		64DB1CCE05BE425BBFDC4673 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,12 +130,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				41AB1E24270207B800720AC2 /* FontAwesome.ttf */,
 				13B07FAE1A68108700A75B9A /* autoclientapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* autoclientappTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D2689B09F343BC545F80D661 /* Pods */,
+				64DB1CCE05BE425BBFDC4673 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
