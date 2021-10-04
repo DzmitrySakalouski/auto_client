@@ -10,7 +10,7 @@ export const PageHeader = ({route}) => {
     };
 
     return (
-        <View style={{paddingHorizontal: 16}}>
+        <View style={{paddingHorizontal: 16, marginTop: 30}}>
             <View style={styles.container}>
                 <View style={styles.topSubHeader}>
                     <View style={styles.topSubHeaderTextContainer}>
